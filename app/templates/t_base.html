@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>{{ title }} - Twitter</title>
+    {% else %}
+        <title>Twitter</title>
+    {% endif %}
+
+    {% block link %}
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='customcss/index.css') }}" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    {% endblock %}
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <nav style="background:#fff" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-1">
+                        <a class="navbar-brand" href={{ url_for('index') }}>
+                            <img alt="Brand" src="../static/image/twitter_logo.png" width="25" height="25">
+                        </a>
+                    </div>
+
+                    <div class="col-md-6">
+                        {% if current_user.is_authenticated() %}
+
+                            <form class="navbar-form navbar-left" role="search" method="get" action="/userlist">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="name" placeholder="username">
+                                </div>
+                                <button class="btn btn-default" type="submit">Search</button>
+                            </form>
+
+                        {% endif %}
+                    </div>
+
+                    <div class="col-md-2 col-md-offset-3 nav-text-center">
+                        {% if current_user.is_authenticated() %}
+                            Hi <a href={{ url_for('me') }}>{{ current_user.name }}</a>
+
+                            &nbsp&nbsp&nbsp&nbsp
+                            <a href={{ url_for('logout') }}>Logout</a>
+
+
+                        {% else %}
+                            <p> Hi ! visitor</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+
+    <div class="row top-buffer">
+        {% block content %}{% endblock %}
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

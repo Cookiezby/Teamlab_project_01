@@ -1,0 +1,43 @@
+.body {
+    position: relative;
+    top: 300px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.col-centered {
+    margin: 0 auto;
+}
+
+.top-buffer {
+    margin-top: 100px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.nav-text-center{
+    height: 51px;
+    line-height: 51px;
+}
+
+.top-post-buffer{
+    margin-top: 30px;
+}
+.AutoNewline
+{
+word-break: break-all;/*必须*/
+}
+
+.the-table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+.post-name{
+    color: #3090C7;
+}
